@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BXL Excel Comparison Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-table"></i>
+                <span>BXL Excel Comparison Tool</span>
+            </div>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="initialView" class="initial-view">
+                <div class="welcome-section">
+                    <h1>Welcome to BXL Excel Comparison Tool</h1>
+                    <p class="subtitle">Compare and analyze your Excel files with ease</p>
+                    <p class="requirements">Upload Excel files (.xlsx) to start comparison</p>
+                </div>
+
+                <div class="drop-area" id="dropArea">
+                    <div class="drop-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p class="drop-title">Drop your Excel files here</p>
+                        <p class="drop-subtitle">Upload at least 2 files to start comparison</p>
+                        <button class="browse-button">Choose Files</button>
+                        <input type="file" id="fileInput" accept=".xlsx" multiple style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <div id="tableView" class="table-view" style="display: none;">
+                <div class="stats-panel"></div>
+                
+                <div class="table-controls">
+                    <div class="file-info">
+                        <span id="fileCount" class="file-count">0 files loaded</span>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-btn add-file" id="addFileBtn">
+                            <i class="fas fa-plus"></i>
+                            Add File
+                        </button>
+                        <button class="control-btn columns" id="columnToggle">
+                            <i class="fas fa-columns"></i>
+                            Columns
+                        </button>
+                        <div class="zoom-controls">
+                            <button class="control-btn" id="zoomOutBtn">
+                                <i class="fas fa-search-minus"></i>
+                            </button>
+                            <span id="zoomLevel" class="zoom-level">100%</span>
+                            <button class="control-btn" id="zoomInBtn">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                        <button class="control-btn export" id="exportExcelBtn">
+                            <i class="fas fa-file-excel"></i>
+                            Export Excel
+                        </button>
+                        <button class="control-btn export" id="exportPdfBtn">
+                            <i class="fas fa-file-pdf"></i>
+                            Export PDF
+                        </button>
+                        <button class="control-btn clear" id="clearBtn">
+                            <i class="fas fa-trash"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                        <div class="loader"></div>
+                        <p>Processing files...</p>
+                    </div>
+                    <div class="table-container">
+                        <table id="dataTable"></table>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="notification" class="notification" style="display: none;">
+            <i class="notification-icon"></i>
+            <span class="notification-message"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
