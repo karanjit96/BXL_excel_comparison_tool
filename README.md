@@ -1,6 +1,4 @@
-# README for BXL Excel Comparison Tool
-
-## BXL Excel Comparison Tool
+# BXL Excel Comparison Tool
 
 BXL Excel Comparison Tool is a web-based application that allows users to compare multiple Excel (`.xlsx`) files. It highlights exact matches, partial matches, mismatches, and empty fields while providing a statistical summary of the comparison.
 
